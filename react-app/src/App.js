@@ -16,17 +16,36 @@ function sarcastify(str) {
   return newStr;
 }
 
-function SarcasticInput(props) {
-  const [input, setInput] = useState(props?.value ?? '');
-  const [sarcasticValue, setSarcasticValue] = useState("");
+function SarcasticInput() {
+  const [state, setState] = useState({
+    rawInput: "",
+    sarcasticInput: "",
+    copied: false
+  });
+
   const handleChange = e => {
-    setSarcasticValue(sarcastify(e.target.value.replace(" ", "\u00A0")));
-    setInput(e.target.value.replace(" ", "\u00A0"));
+    setState({
+      sarcasticInput: sarcastify(e.target.value.replace(" ", "\u00A0")),
+      rawInput: e.target.value.replace(" ", "\u00A0"),
+      copied: false
+    });
   }
+
+  const handleCopy = e => {
+    navigator.clipboard.writeText(state.sarcasticInput);
+    setState({
+      ...state,
+      copied: true
+    });
+  }
+
   return (
     <div>
-      <input value={input} onChange={handleChange}/>
-      <h2>{sarcasticValue}</h2>
+      <input value={state.rawInput} onChange={handleChange}/>
+      <div>
+        <h2>{state.sarcasticInput}</h2>
+        <button onClick={handleCopy}>{state.copied ? "✅ Copied" : "Copy"}</button>
+      </div>
     </div>
   )
 }
