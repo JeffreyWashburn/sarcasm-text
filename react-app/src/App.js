@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function sarcastify(str) {
+  if (str === " ") {
+    return str;
+  }
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    const newChar = getRandomInt(10) > 5 ? str.charAt(i).toUpperCase() : str.charAt(i);
+    newStr += newChar;
+  }
+  return newStr;
+}
+
+function SarcasticInput(props) {
+  const [input, setInput] = useState(props?.value ?? '');
+  const [sarcasticValue, setSarcasticValue] = useState("");
+  const handleChange = e => {
+    setSarcasticValue(sarcastify(e.target.value.replace(" ", "\u00A0")));
+    setInput(e.target.value.replace(" ", "\u00A0"));
+  }
+  return (
+    <div>
+      <input value={input} onChange={handleChange}/>
+      <h2>{sarcasticValue}</h2>
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload, pal.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <SarcasticInput />
+  )
 }
 
 export default App;
