@@ -12,6 +12,8 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: dev
+    secrets:
+      deploymentToken: ${{ secrets.AZURE_DEPLOYMENT }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
