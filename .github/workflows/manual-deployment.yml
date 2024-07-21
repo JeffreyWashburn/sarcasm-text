@@ -6,6 +6,4 @@ on:
 jobs:
   prod_deploy_job:
     uses: ./.github/workflows/deploy.yml
-    with:
-      environment: 'prod'
     secrets: inherit
