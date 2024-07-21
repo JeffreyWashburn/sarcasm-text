@@ -1,4 +1,4 @@
-name: Deploy PR to Dev environment
+name: Deploy PR
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     uses: ./.github/workflows/deploy.yml
     with:
-      environment: dev
+      environment: prod
     secrets: inherit
 
   close_pull_request_job:
