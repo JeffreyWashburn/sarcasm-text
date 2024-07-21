@@ -12,8 +12,7 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: dev
-    secrets:
-      deploymentToken: ${{ secrets.AZURE_DEPLOYMENT }}
+    secrets: inherit
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -24,5 +23,6 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
+          app_location: "./react-app"
           azure_static_web_apps_api_token: ${{ secrets.AZURE_DEPLOYMENT }}
           action: "close"

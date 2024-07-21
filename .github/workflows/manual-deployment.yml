@@ -15,14 +15,12 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: 'prod'
-    secrets:
-      deploymentToken: ${{ secrets.AZURE_DEPLOYMENT }}
+    secrets: inherit
   
   dev_deploy_job:
     if: ${{ inputs.environment != 'prod' }}
     uses: ./.github/workflows/deploy.yml
     with:
       environment: 'dev'
-    secrets:
-      deploymentToken: ${{ secrets.AZURE_DEPLOYMENT }}
+    secrets: inherit
 
