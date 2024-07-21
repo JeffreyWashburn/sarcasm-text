@@ -1,0 +1,11 @@
+name: Main Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  prod_deploy_job:
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
