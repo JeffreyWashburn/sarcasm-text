@@ -4,10 +4,6 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-String.prototype.replaceAt = function(index, replacement) {
-  return this.substring(0, index) + replacement + this.substring(index + replacement.length);
-}
-
 function sarcastify(str) {
   if (str === " ") {
     return str;
