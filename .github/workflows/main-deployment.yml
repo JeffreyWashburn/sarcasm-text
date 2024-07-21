@@ -1,7 +1,9 @@
-name: Manual Deployment
+name: Main Deployment
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   prod_deploy_job:
