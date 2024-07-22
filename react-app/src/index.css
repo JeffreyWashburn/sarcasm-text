@@ -1,12 +1,14 @@
 @import-normalize;
 
+html, body {
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+}
+
 .App {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid black;
-}
-
-.SarcasmInput {
-    width: 100%;
 }
