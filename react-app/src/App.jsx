@@ -41,16 +41,15 @@ function SarcasticInput() {
   };
 
   return (
-    <div className="SarcasmInput">
+    <div className="InputComponent">
       <input
         placeholder="Enter a sarcastic comment..."
         value={state.rawInput}
         onChange={handleChange}
       />
-      <h2>{state.sarcasticInput}</h2>
-      <button onClick={handleCopy}>
-        {state.copied ? "✅ Copied" : "Copy"}
-      </button>
+      <div className="SarcasticOutput"><p>{state.sarcasticInput}</p><button>copy</button></div>
+      <div className="SarcasticOutput"><p>{state.sarcasticInput}</p><button>copy</button></div>
+      <div className="SarcasticOutput"><p>{state.sarcasticInput}</p><button>copy</button></div>
     </div>
   );
 }

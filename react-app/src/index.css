@@ -12,3 +12,29 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+
+.InputComponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+}
+
+.SarcasticOutput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 12px;
+    background-color: rgb(151, 221, 199);
+    min-height: 30px;
+    max-height: 30px;
+    border-radius: 5px;
+}
+
+.SarcasticOutput > p {
+    max-width: 90%;
+    overflow: hidden;
+}
